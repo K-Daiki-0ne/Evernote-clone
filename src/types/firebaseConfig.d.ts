@@ -1,12 +1,12 @@
 // TypeScript types file
 
 type FirebaseConfig = {
-  apiKey: string,
-  authDomain: string,
-  databaseURL: string,
-  projectId: string,
-  storageBucket: string,
-  messagingSenderId: string,
-  appId: string,
-  measurementId: string
+  apiKey: string | undefined,
+  authDomain: string | undefined,
+  databaseURL: string | undefined,
+  projectId: string | undefined,
+  storageBucket: string | undefined,
+  messagingSenderId: string | undefined,
+  appId: string | undefined,
+  measurementId: string| undefined
 }

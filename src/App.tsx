@@ -4,14 +4,14 @@ import '@firebase/firestore';
 import { firebaseConfig } from './config/firebaseConfig';
 
 export function App() {
-  try {
+  /* try {
     firebase.initializeApp(firebaseConfig);
     console.log('Firebase connect ...OK');
   } catch (err) {
     if(!/already exists/.test(err.message)) {
       console.log('Firebase connection ...NO');
     }
-  }
+  } */
   return (
     <div>
       <p>Hello World</p>

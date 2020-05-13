@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import firebase from 'firebase';
+import { Editor } from '../components/Editor/Editor';
+import './Home.css';
 
 export function Home() {
   const [selectedNoteIndex, setSelectedNoteIndex] = useState(null);
@@ -20,8 +22,8 @@ export function Home() {
       })
   }, [])
   return (
-    <div>
-      <p>Hello World</p>
+    <div className="home-container">
+      <Editor />
     </div>
   )
 }

@@ -3,14 +3,28 @@ import {
   List, 
   Divider, 
   Button } from '@material-ui/core';
+import { useStyles } from './style.js';
 
-export function Sidebar() {
-  const [addingNote, setAddingNote] = useState<boolean>(false)
-  const [title, setTitle] = useState<string>('')
 
+type HomeProp = {
+
+}
+
+export function Sidebar<HomeProp>() {
+  const [addingNote, setAddingNote] = useState<boolean>(false);
+  const [title, setTitle] = useState<string>('');
+
+  function newNote() {
+    console.log()
+  }
+
+
+  const classes: any = useStyles();
   return (
-    <div>
-      <p>Hello form Sidebar</p>
+    <div className={classes.sidebarContainer}>
+      <Button className={classes.newNoteBtn}>
+        New Note
+      </Button>
     </div>
   )
 }

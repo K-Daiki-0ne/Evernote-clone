@@ -3,7 +3,7 @@ import {
   List, 
   Divider, 
   Button } from '@material-ui/core';
-import { useStyles } from './style.js';
+import useStyles from './style.js';
 
 
 type HomeProp = {

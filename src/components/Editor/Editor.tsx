@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
-import { useStyles } from './Style.js';
+import useStyles from './Style.js';
 import debounce from '../../util/helper.js';
 import ReactQuill from 'react-quill';
 import "react-quill/dist/quill.snow.css";

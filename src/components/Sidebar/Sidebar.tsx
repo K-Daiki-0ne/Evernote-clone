@@ -14,9 +14,9 @@ export function Sidebar<HomeProp>() {
   const [addingNote, setAddingNote] = useState<boolean>(false);
   const [title, setTitle] = useState<string>('');
 
-  function newNote() {
-    console.log()
-  }
+  // function newNote() {
+  //   console.log()
+  // }
 
 
   const classes: any = useStyles();

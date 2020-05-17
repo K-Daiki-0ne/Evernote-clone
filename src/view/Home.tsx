@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import firebase from 'firebase';
 import 'firebase/firestore';
 import { Editor } from '../components/Editor/Editor';
+import { Sidebar } from '../components/Sidebar/Sidebar';
 import './Home.css';
 
 export function Home() {
@@ -24,6 +25,7 @@ export function Home() {
   }, [])
   return (
     <div className="home-container">
+      <Sidebar />
       <Editor />
     </div>
   )

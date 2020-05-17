@@ -6,9 +6,9 @@ import ReactQuill from 'react-quill';
 import "react-quill/dist/quill.snow.css";
 
 export function Editor() {
-  const [text, setText] = useState<string>('');
+  const [text, setText]   = useState<string>('');
   const [title, setTitle] = useState<string>('');
-  const [id, setId] = useState<string>('');
+  const [id, setId]       = useState<string>('');
 
   const classes: any = useStyles();
 

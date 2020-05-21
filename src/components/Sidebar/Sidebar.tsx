@@ -7,12 +7,12 @@ import useStyles from './style.js';
 
 
 type HomeProp = {
-
+  notes: Array<FirebaseData>; 
 }
 
 export function Sidebar<HomeProp>() {
-  const [addingNote, setAddingNote] = useState<boolean>(false);
-  const [title, setTitle] = useState<string>('');
+  const [addingNote, setAddingNote] = useState<addingNoteType>(false);
+  const [title, setTitle] = useState<titleType>('');
 
   function newNote(): void {
     setAddingNote(!addingNote);

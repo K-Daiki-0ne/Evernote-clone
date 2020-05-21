@@ -14,12 +14,12 @@ export function Sidebar<HomeProp>() {
   const [addingNote, setAddingNote] = useState<boolean>(false);
   const [title, setTitle] = useState<string>('');
 
-  function newNote() {
+  function newNote(): void {
     setAddingNote(!addingNote);
     setTitle('');
   }
 
-  function updatetitle(e: any) {
+  function updatetitle(e: any): void {
     e.preventDefault();
     setTitle(e.target.value);
   }

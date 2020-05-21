@@ -24,6 +24,10 @@ export function Sidebar<HomeProp>() {
     setTitle(e.target.value);
   }
 
+  function createNote(): void {
+    console.log(title);
+  }
+
   const classes: any = useStyles();
 
   return (
@@ -32,7 +36,11 @@ export function Sidebar<HomeProp>() {
         className={classes.newNoteBtn}
         onClick={newNote}
       >
-        New Note
+        {
+          addingNote 
+            ? 'Cancel'
+            : 'New Note'
+        }
       </Button>
       {
         addingNote ? 
@@ -43,6 +51,12 @@ export function Sidebar<HomeProp>() {
             placeholder='Enter note title'
             onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>): void => updatetitle(e)}
           />
+          <Button 
+            className={classes.newNoteSubmitBtn}
+            onClick={createNote}
+          >
+            Create New Note
+          </Button>
         </div>
 
         : null

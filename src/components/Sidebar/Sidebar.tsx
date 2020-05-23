@@ -12,7 +12,7 @@ type HomeProp = {
 
 export function Sidebar<HomeProp>() {
   const [addingNote, setAddingNote] = useState<addingNoteType>(false);
-  const [title, setTitle] = useState<titleType>('');
+  const [title, setTitle] = useState<TitleType>('');
 
   function newNote(): newNote {
     setAddingNote(!addingNote);

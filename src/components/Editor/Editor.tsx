@@ -6,9 +6,9 @@ import ReactQuill from 'react-quill';
 import "react-quill/dist/quill.snow.css";
 
 export function Editor() {
-  const [text, setText]   = useState<textType>('');
-  const [title, setTitle] = useState<titleType>('');
-  const [id, setId]       = useState<idType>('');
+  const [text, setText]   = useState<TextType>('');
+  const [title, setTitle] = useState<TitleType>('');
+  const [id, setId]       = useState<IdType>('');
 
   const classes: any = useStyles();
 
@@ -22,12 +22,12 @@ export function Editor() {
     </div>
   )
 
-  async function updateBody(e: string): Promise<void> {
+  async function updateBody(e): UpdateBody {
     await setText(e);
     update();    
   }
 
-  function update(): void {
+  function update(): Update {
     debounce(() => {
       console.log('Update Database ...OK');
     }, 1500);

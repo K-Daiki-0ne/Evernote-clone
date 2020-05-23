@@ -1,1 +1,1 @@
-type titleType = string;
+type TitleType = string;

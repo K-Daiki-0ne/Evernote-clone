@@ -1,11 +1,13 @@
-type addingNoteType = boolean;
+type AddingNoteType = boolean;
 
-type newNote = () => void;
+type Classes = any;
 
-type updateTitle = (e: any) => void;
+type NewNote = () => void;
 
-type createNote = () => void;
+type UpdateTitle = (e: any) => void;
 
-type selectItem = () => void;
+type CreateNote = () => void;
 
-type deleteItem = () => void;
+type SelectItem = () => void;
+
+type DeleteItem = () => void;

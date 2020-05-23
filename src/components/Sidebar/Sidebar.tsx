@@ -11,32 +11,32 @@ type HomeProp = {
 }
 
 export function Sidebar<HomeProp>() {
-  const [addingNote, setAddingNote] = useState<addingNoteType>(false);
+  const [addingNote, setAddingNote] = useState<AddingNoteType>(false);
   const [title, setTitle] = useState<TitleType>('');
 
-  function newNote(): newNote {
+  function newNote(): NewNote {
     setAddingNote(!addingNote);
     setTitle('');
   };
 
-  function updateTitle(e): updateTitle {
+  function updateTitle(e): UpdateTitle {
     e.preventDefault();
     setTitle(e.target.value);
   };
 
-  function createNote(): createNote {
+  function createNote(): CreateNote {
     console.log(title);
   };
 
-  function selecteItem(): selectItem {
+  function selecteItem(): SelectItem {
     console.log('Selected Note')
   };
 
-  function deleteItem(): deleteItem {
+  function deleteItem(): DeleteItem {
     console.log('Delete Note');
   };
 
-  const classes: any = useStyles();
+  const classes: Classes = useStyles();
 
   return (
     <div className={classes.sidebarContainer}>

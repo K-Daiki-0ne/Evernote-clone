@@ -17,16 +17,24 @@ export function Sidebar<HomeProp>() {
   function newNote(): void {
     setAddingNote(!addingNote);
     setTitle('');
-  }
+  };
 
   function updatetitle(e: any): void {
     e.preventDefault();
     setTitle(e.target.value);
-  }
+  };
 
   function createNote(): void {
     console.log(title);
-  }
+  };
+
+  function selecteItem(): void {
+    console.log('Selected Note')
+  };
+
+  function deleteItem(): void {
+    console.log('Delete Note');
+  };
 
   const classes: any = useStyles();
 
@@ -61,6 +69,21 @@ export function Sidebar<HomeProp>() {
 
         : null
       }
+      <List>
+        {
+          notes.map((_note, _index) => {
+            return (
+              <div key={_index}>
+                <SidebarItem 
+                  _note={_note}
+                  _index={_index}
+                  selecte
+                />
+              </div>
+            )
+          })
+        }
+      </List>
     </div>
   )
 }

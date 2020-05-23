@@ -1,7 +1,5 @@
 type AddingNoteType = boolean;
 
-type Classes = any;
-
 type NewNote = () => void;
 
 type UpdateTitle = (e: any) => void;

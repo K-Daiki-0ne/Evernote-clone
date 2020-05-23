@@ -14,25 +14,25 @@ export function Sidebar<HomeProp>() {
   const [addingNote, setAddingNote] = useState<addingNoteType>(false);
   const [title, setTitle] = useState<titleType>('');
 
-  function newNote(): void {
+  function newNote(): newNote {
     setAddingNote(!addingNote);
     setTitle('');
   };
 
-  function updatetitle(e: any): void {
+  function updateTitle(e): updateTitle {
     e.preventDefault();
     setTitle(e.target.value);
   };
 
-  function createNote(): void {
+  function createNote(): createNote {
     console.log(title);
   };
 
-  function selecteItem(): void {
+  function selecteItem(): selectItem {
     console.log('Selected Note')
   };
 
-  function deleteItem(): void {
+  function deleteItem(): deleteItem {
     console.log('Delete Note');
   };
 
@@ -57,7 +57,7 @@ export function Sidebar<HomeProp>() {
             type="text" 
             className={classes.newNoteInput}
             placeholder='Enter note title'
-            onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>): void => updatetitle(e)}
+            onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>): void => updateTitle(e)}
           />
           <Button 
             className={classes.newNoteSubmitBtn}

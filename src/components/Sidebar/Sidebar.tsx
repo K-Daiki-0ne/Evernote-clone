@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { 
   List, 
   Divider, 
@@ -7,32 +8,34 @@ import useStyles from './style.js';
 
 
 type HomeProp = {
-  notes: Array<FirebaseData>; 
+  // notes: Array<FirebaseData>;
+  notes: any 
+  selectedNoteIndex: any
 }
 
-export function Sidebar<HomeProp>() {
+export const Sidebar: React.FC<HomeProp> = ({ notes, selectedNoteIndex }) => {
   const [addingNote, setAddingNote] = useState<AddingNoteType>(false);
   const [title, setTitle] = useState<TitleType>('');
 
-  function newNote(): NewNote {
+  function newNote(): void {
     setAddingNote(!addingNote);
     setTitle('');
   };
 
-  function updateTitle(e): UpdateTitle {
+  function updateTitle(e: any): void {
     e.preventDefault();
     setTitle(e.target.value);
   };
 
-  function createNote(): CreateNote {
+  function createNote(): void {
     console.log(title);
   };
 
-  function selecteItem(): SelectItem {
+  function selectItem(): void {
     console.log('Selected Note')
   };
 
-  function deleteItem(): DeleteItem {
+  function deleteItem(): void {
     console.log('Delete Note');
   };
 
@@ -72,18 +75,17 @@ export function Sidebar<HomeProp>() {
         }
         <List>
           {
-            notes.map((_note, _index) => {
+            notes.map((_note: any, _index: any) => {
               return (
                 <div key={_index}>
                   <SidebarItem 
                     _note={_note}
                     _index={_index}
-                    // selecte
+                    selectedNoteIndex={selectedNoteIndex}
+                    selectItem={selectItem}
+                    deleteItem={deleteItem}
                   />
-
-                  <Divider 
-                  
-                  />
+                  <Divider />
                 </div>
               )
             })

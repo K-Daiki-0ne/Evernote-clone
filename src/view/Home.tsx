@@ -26,8 +26,8 @@ export function Home() {
   return (
     <div className="home-container">
       <Sidebar 
-        selectedNote={selectedNote}
-        notes={notes}
+        selectedNoteIndex={selectedNoteIndex}
+        notes={note}
       />
       <Editor />
     </div>

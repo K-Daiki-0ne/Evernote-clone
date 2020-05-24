@@ -38,52 +38,68 @@ export function Sidebar<HomeProp>() {
 
   const classes: Classes = useStyles();
 
-  return (
-    <div className={classes.sidebarContainer}>
-      <Button 
-        className={classes.newNoteBtn}
-        onClick={newNote}
-      >
+  if(notes) {
+    return (
+      <div className={classes.sidebarContainer}>
+        <Button 
+          className={classes.newNoteBtn}
+          onClick={newNote}
+        >
+          {
+            addingNote 
+              ? 'Cancel'
+              : 'New Note'
+          }
+        </Button>
         {
-          addingNote 
-            ? 'Cancel'
-            : 'New Note'
-        }
-      </Button>
-      {
-        addingNote ? 
-        <div>
-          <input 
-            type="text" 
-            className={classes.newNoteInput}
-            placeholder='Enter note title'
-            onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>): void => updateTitle(e)}
-          />
-          <Button 
-            className={classes.newNoteSubmitBtn}
-            onClick={createNote}
-          >
-            Create New Note
-          </Button>
-        </div>
+          addingNote ? 
+          <div>
+            <input 
+              type="text" 
+              className={classes.newNoteInput}
+              placeholder='Enter note title'
+              onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>): void => updateTitle(e)}
+            />
+            <Button 
+              className={classes.newNoteSubmitBtn}
+              onClick={createNote}
+            >
+              Create New Note
+            </Button>
+          </div>
 
-        : null
-      }
-      <List>
-        {
-          notes.map((_note, _index) => {
-            return (
-              <div key={_index}>
-                <SidebarItem 
-                  _note={_note}
-                  _index={_index}
-                  selecte
-                />
-              </div>
-            )
-          })
+          : null
         }
-      </List>
-    </div>
-  )
+        <List>
+          {
+            notes.map((_note, _index) => {
+              return (
+                <div key={_index}>
+                  <SidebarItem 
+                    _note={_note}
+                    _index={_index}
+                    // selecte
+                  />
+
+                  <Divider 
+                  
+                  />
+                </div>
+              )
+            })
+          }
+        </List>
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <p>
+          Sorry...  <br />
+          Note is nothing .
+        </p>
+      </div>
+    )
+  }
+
 }

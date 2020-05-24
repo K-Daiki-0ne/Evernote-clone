@@ -25,7 +25,10 @@ export function Home() {
   }, [])
   return (
     <div className="home-container">
-      <Sidebar />
+      <Sidebar 
+        selectedNote={selectedNote}
+        notes={notes}
+      />
       <Editor />
     </div>
   )

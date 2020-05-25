@@ -1,5 +1,7 @@
 type FirebaseData = {
-  title: string,
-  body: string,
-  id: number
+  notes: ({
+    title: string;
+    body: string;
+    id: string;
+  })
 }

@@ -6,17 +6,23 @@ import {
   Button } from '@material-ui/core';
 import useStyles from './style.js';
 
-
-type HomeProp = {
-  // notes: Array<FirebaseData>;
-  notes: any 
-  selectedNoteIndex: any
+type FirebaseData = {
+  notes: ({
+    title: string;
+    body: string;
+    id: string;
+  })
 }
 
-export const Sidebar: React.FC<HomeProp> = ({ notes, selectedNoteIndex }) => {
+type HomeProps = {
+  notes: Array<FirebaseData>;
+  selectedNoteIndex: any;
+}
+
+export const Sidebar: React.FC<HomeProps> = ({ notes, selectedNoteIndex }) => {
   const [addingNote, setAddingNote] = useState<AddingNoteType>(false);
   const [title, setTitle] = useState<TitleType>('');
-
+  console.log(notes)
   function newNote(): void {
     setAddingNote(!addingNote);
     setTitle('');

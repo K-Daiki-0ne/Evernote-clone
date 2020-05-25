@@ -9,6 +9,7 @@ export function Home() {
   const [selectedNoteIndex, setSelectedNoteIndex] = useState(null);
   const [selectedNote, setSelectedNote] = useState(null);
   const [note, setNote] = useState<FirebaseData[]>([]);
+  
 
   useEffect(() => {
     firebase
@@ -16,13 +17,15 @@ export function Home() {
       .collection('notes')
       .onSnapshot(serverUpdate => {
         const notes: any = serverUpdate.docs.map(_doc => {
-          const data: any = _doc.data();
+          const data = _doc.data();
+          console.log(data)
           data['id'] = _doc.id;
           return data;
         });
         setNote(notes)
       })
   }, [])
+  
   return (
     <div className="home-container">
       <Sidebar 

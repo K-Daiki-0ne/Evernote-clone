@@ -8,14 +8,15 @@ import useStyles from './style.js'
 import { removeHTMLTags } from '../../util/helper';
 
 type SidebarItemProps = {
-  _note: any;
-  _index: any;
+  _note: Note;
+  _index: number;
   selectedNoteIndex: any;
   selectItem: () => void;
   deleteItem: () => void;
 }
 
 export const SidebarItem: React.FC<SidebarItemProps> = ({ _note, _index, selectedNoteIndex, selectItem, deleteItem }) => {
+
   const classes: Classes = useStyles();
   return (
     <div>

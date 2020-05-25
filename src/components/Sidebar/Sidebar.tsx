@@ -6,13 +6,13 @@ import {
   Button } from '@material-ui/core';
 import useStyles from './style.js';
 
-type FirebaseData = {
-  notes: ({
-    title: string;
-    body: string;
-    id: string;
-  })
-}
+// type FirebaseData = {
+//   notes: ({
+//     title: string;
+//     body: string;
+//     id: string;
+//   })
+// }
 
 type HomeProps = {
   notes: Array<FirebaseData>;

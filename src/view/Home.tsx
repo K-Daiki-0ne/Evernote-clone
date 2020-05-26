@@ -6,7 +6,7 @@ import { Sidebar } from '../components/Sidebar/Sidebar';
 import './Home.css';
 
 export function Home() {
-  const [selectedNoteIndex, setSelectedNoteIndex] = useState(null);
+  const [selectedNoteIndex, setSelectedNoteIndex] = useState<number>();
   const [selectedNote, setSelectedNote] = useState(null);
   const [note, setNote] = useState<FirebaseData[]>([]);
   
@@ -25,6 +25,13 @@ export function Home() {
         setNote(notes)
       })
   }, [])
+
+  function selectNote(note, index): void {
+    setSelectedNoteIndex(index);
+    setSelectedNote(note);
+  };
+
+  
   
   return (
     <div className="home-container">

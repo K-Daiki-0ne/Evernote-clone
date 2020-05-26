@@ -31,7 +31,17 @@ export function Home() {
     setSelectedNote(note);
   };
 
-  
+  function noteUpdate(id, noteObj): void {
+    firebase  
+      .firestore()
+      .collection()
+      .doc(id)
+      .update({
+        title: noteObj.title,
+        body: noteObj.body,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      });
+  }
   
   return (
     <div className="home-container">

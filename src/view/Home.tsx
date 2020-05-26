@@ -6,7 +6,7 @@ import { Sidebar } from '../components/Sidebar/Sidebar';
 import './Home.css';
 
 export function Home() {
-  const [selectedNoteIndex, setSelectedNoteIndex] = useState<number>();
+  const [selectedNoteIndex, setSelectedNoteIndex] = useState(null);
   const [selectedNote, setSelectedNote] = useState(null);
   const [note, setNote] = useState<FirebaseData[]>([]);
   
@@ -64,7 +64,25 @@ export function Home() {
       setSelectedNoteIndex(newNoteIndex);
   }
 
-  
+  async function deleteNote(note): Promise<void> {
+    const noteIndex = notes.indexOf(note);
+    await setNote(notes.filter(_note => _note != note));
+
+    if(selectedNoteIndex === noteIndex) {
+      setSelectedNoteIndex(null);
+      setSelectedNote(null);
+    } else {
+      note.length > 1
+        ? selectNote(notes[selectedNoteIndex -1], selectedNoteIndex - 1)
+        : setSelectedNoteIndex(null) && setSelectedNoteIndex(null)
+    }
+
+    firebase
+      .firestore()
+      .collection('notes')
+      .doc(note.id)
+      .delete();
+  }
   
   return (
     <div className="home-container">

@@ -42,6 +42,29 @@ export function Home() {
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       });
   }
+
+  async function newNote(title): Promise<void> {
+    const note = {
+      title: title,
+      body: ''
+    };
+
+    const newData = await firebase
+      .firestore()
+      .collection('notes')
+      .add({
+        title: note.title,
+        body: note.title,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      });
+      const newId = newData.id;
+      await setNote(...notes, note);
+      const newNoteIndex = notes.indexOf(notes.filter(_note => _note.id === newId)[0]);
+      setSelectedNote(notes[newNoteIndex]);
+      setSelectedNoteIndex(newNoteIndex);
+  }
+
+  
   
   return (
     <div className="home-container">

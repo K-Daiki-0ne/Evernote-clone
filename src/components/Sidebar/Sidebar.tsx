@@ -8,10 +8,13 @@ import useStyles from './style.js';
 
 type HomeProps = {
   notes: Array<FirebaseData>;
-  selectedNoteIndex: any;
+  selectedNoteIndex: number;
+  deleteNote: () => Promise<void>;
+  selectNote: () => void;
+  newNote: () => Promise<void>;
 }
 
-export const Sidebar: React.FC<HomeProps> = ({ notes, selectedNoteIndex }) => {
+export const Sidebar: React.FC<HomeProps> = ({ notes, selectedNoteIndex, deleteNote, selectNote, newNote }) => {
   const [addingNote, setAddingNote] = useState<AddingNoteType>(false);
   const [title, setTitle] = useState<TitleType>('');
   function newNote(): void {
@@ -24,16 +27,18 @@ export const Sidebar: React.FC<HomeProps> = ({ notes, selectedNoteIndex }) => {
     setTitle(e.target.value);
   };
 
-  function createNote(): void {
-    // console.log(title);
+  function createItem(): void {
+    newNote(title);
+    setTitle('');
+    setAddingNote(false);
   };
 
-  function selectItem(): void {
-    console.log('Selected Note')
+  function selectItem(n: any, i: any): void {
+    selectNote(n, i);
   };
 
-  function deleteItem(): void {
-    console.log('Delete Note');
+  function deleteItem(note: any): void {
+    deleteNote(note);
   };
 
   const classes: Classes = useStyles();

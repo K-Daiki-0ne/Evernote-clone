@@ -89,9 +89,9 @@ export function Home() {
       <Sidebar 
         selectedNoteIndex={selectedNoteIndex}
         notes={note}
-        deleteItem={deleteNote}
-        selectItem={selectNote}
-        new
+        deleteNote={deleteNote}
+        selectNote={selectNote}
+        newNote={newNote}
       />
       <Editor />
     </div>

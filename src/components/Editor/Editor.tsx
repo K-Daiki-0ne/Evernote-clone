@@ -22,12 +22,12 @@ export function Editor() {
     </div>
   )
 
-  async function updateBody(e): UpdateBody {
+  async function updateBody(e: any) {
     await setText(e);
     update();    
   }
 
-  function update(): Update {
+  function update(): void {
     debounce(() => {
       console.log('Update Database ...OK');
     }, 1500);

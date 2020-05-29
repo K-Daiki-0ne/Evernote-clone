@@ -1,5 +1,5 @@
-type FirebaseData = {
-  title: string,
-  body: string,
-  id: number
+type DataType = {
+  title: string;
+  body: string;
+  id: string;
 }

@@ -9,15 +9,17 @@ import useStyles from './style.js';
 type HomeProps = {
   notes: Array<FirebaseData>;
   selectedNoteIndex: number;
-  deleteNote: () => Promise<void>;
-  selectNote: () => void;
-  newNote: () => Promise<void>;
+  deleteNote: (note: any) => Promise<void>;
+  // selectNote: (n: any, i: any) => void;
+
+  selectNote: (n: any, i: any) => void;
+  newNote: (title: any) => Promise<void>;
 }
 
 export const Sidebar: React.FC<HomeProps> = ({ notes, selectedNoteIndex, deleteNote, selectNote, newNote }) => {
   const [addingNote, setAddingNote] = useState<AddingNoteType>(false);
   const [title, setTitle] = useState<TitleType>('');
-  function newNote(): void {
+  function newItem(): void {
     setAddingNote(!addingNote);
     setTitle('');
   };
@@ -67,7 +69,7 @@ export const Sidebar: React.FC<HomeProps> = ({ notes, selectedNoteIndex, deleteN
             />
             <Button 
               className={classes.newNoteSubmitBtn}
-              onClick={createNote}
+              onClick={newItem}
             >
               Create New Note
             </Button>

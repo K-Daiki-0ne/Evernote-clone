@@ -3,7 +3,7 @@ import {
   ListItem,
   ListItemText,
 } from '@material-ui/core';
-import DeleteIcon from '@material-ui/icons/Delete';
+// import DeleteIcon from '@material-ui/icons/Delete';
 import useStyles from './style.js'
 import { removeHTMLTags } from '../../util/helper';
 
@@ -11,8 +11,8 @@ type SidebarItemProps = {
   _note: Note;
   _index: number;
   selectedNoteIndex: number;
-  selectItem: () => void;
-  deleteItem: () => void;
+  selectItem: (n: any, i:any) => void;
+  deleteItem: (note: any) => void;
 }
 
 export const SidebarItem: React.FC<SidebarItemProps> = ({ _note, _index, selectedNoteIndex, selectItem, deleteItem }) => {
@@ -24,7 +24,7 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({ _note, _index, selecte
   };
 
   function deleteOneItem(note: Note): void {
-    if(window.confim('Are you sure delete this one ?')) {
+    if(window.confirm('Are you sure delete this one ?')) {
       deleteItem(note);
     };
   };
@@ -39,17 +39,24 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({ _note, _index, selecte
       >
         <div 
           className={classes.textSection}
-          onClick={selectOneItem(_note, _index)}
+          onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void => selectOneItem(_note, _index)}
         >
           <ListItemText 
             primary={_note.title}
             secondary={removeHTMLTags(_note.body.substring(0, 30)) + '...'}
           />
         </div>
-        <DeleteIcon 
+        {/* <DeleteIcon 
           className={classes.deleteIcon}
           onClick={deleteOneItem(_note)}
-        />
+        /> */}
+
+        <button
+          className={classes.deleteIcon}
+          onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => deleteOneItem(_note)}
+        >
+         Delete
+        </button>
       </ListItem>
     </div>
   )

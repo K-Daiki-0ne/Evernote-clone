@@ -6,9 +6,9 @@ import { Sidebar } from '../components/Sidebar/Sidebar';
 import './Home.css';
 
 export function Home() {
-  const [selectedNoteIndex, setSelectedNoteIndex] = useState(null);
-  const [selectedNote, setSelectedNote] = useState(null);
-  const [note, setNote] = useState<FirebaseData[]>([]);
+  const [selectedNoteIndex, setSelectedNoteIndex] = useState<number>(0);
+  const [selectedNote, setSelectedNote] = useState<any>(0);
+  const [note, setNote] = useState<any>([]);
   
 
   useEffect(() => {
@@ -18,7 +18,6 @@ export function Home() {
       .onSnapshot(serverUpdate => {
         const notes: any = serverUpdate.docs.map(_doc => {
           const data = _doc.data();
-          console.log(data)
           data['id'] = _doc.id;
           return data;
         });
@@ -26,15 +25,15 @@ export function Home() {
       })
   }, [])
 
-  function selectNote(note, index): void {
+  function selectNote(note: any, index: number): void {
     setSelectedNoteIndex(index);
     setSelectedNote(note);
   };
 
-  function noteUpdate(id, noteObj): void {
+  function noteUpdate(id: string, noteObj: any): void {
     firebase  
       .firestore()
-      .collection()
+      .collection('notes')
       .doc(id)
       .update({
         title: noteObj.title,
@@ -43,9 +42,9 @@ export function Home() {
       });
   }
 
-  async function newNote(title): Promise<void> {
-    const note = {
-      title: title,
+  async function newNote(newTitle: any): Promise<void> {
+    const newNote: any = {
+      title: newTitle,
       body: ''
     };
 
@@ -53,28 +52,30 @@ export function Home() {
       .firestore()
       .collection('notes')
       .add({
-        title: note.title,
-        body: note.title,
+        title: newNote.newTitle,
+        body: newNote.title,
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       });
       const newId = newData.id;
-      await setNote(...notes, note);
-      const newNoteIndex = notes.indexOf(notes.filter(_note => _note.id === newId)[0]);
-      setSelectedNote(notes[newNoteIndex]);
+      await setNote([...note, newNote]);
+      
+      const newNoteIndex = note.indexOf(note.filter((_note: any) => _note.id === newId)[0]);
+      setSelectedNote(note[newNoteIndex]);
       setSelectedNoteIndex(newNoteIndex);
   }
 
-  async function deleteNote(note): Promise<void> {
-    const noteIndex = notes.indexOf(note);
-    await setNote(notes.filter(_note => _note != note));
+  async function deleteNote(note: any) {
+    const noteIndex = note.indexOf(note);
+    await setNote(note.filter((_note: any) => _note !== note));
 
     if(selectedNoteIndex === noteIndex) {
-      setSelectedNoteIndex(null);
+      setSelectedNoteIndex(0);
       setSelectedNote(null);
     } else {
       note.length > 1
-        ? selectNote(notes[selectedNoteIndex -1], selectedNoteIndex - 1)
-        : setSelectedNoteIndex(null) && setSelectedNoteIndex(null)
+        ? selectNote(note[selectedNoteIndex -1], selectedNoteIndex - 1)
+        : setSelectedNoteIndex(0)
+          setSelectedNoteIndex(0)
     }
 
     firebase

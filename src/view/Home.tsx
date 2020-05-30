@@ -8,7 +8,7 @@ import './Home.css';
 export function Home() {
   const [selectedNoteIndex, setSelectedNoteIndex] = useState<number>(0);
   const [selectedNote, setSelectedNote] = useState<any>(0);
-  const [note, setNote] = useState<any>([]);
+  const [note, setNote] = useState<FirebaseData[]>([]);
   
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export function Home() {
     setSelectedNote(note);
   };
 
-  function noteUpdate(id: string, noteObj: any): void {
+  function noteUpdate(id: string, noteObj: Data): void {
     firebase  
       .firestore()
       .collection('notes')
@@ -42,23 +42,24 @@ export function Home() {
       });
   }
 
-  async function newNote(newTitle: any): Promise<void> {
-    const newNote: any = {
+  async function newNote(newTitle: string): Promise<void> {
+    const newNote: NewData = {
       title: newTitle,
       body: ''
     };
 
-    const newData = await firebase
+    const newData: any = await firebase
       .firestore()
       .collection('notes')
       .add({
-        title: newNote.newTitle,
-        body: newNote.title,
+        title: newNote.title,
+        body: newNote.body,
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       });
       const newId = newData.id;
-      await setNote([...note, newNote]);
+      await setNote([...note, newData]);
       
+      // _note.id === newId)[0]
       const newNoteIndex = note.indexOf(note.filter((_note: any) => _note.id === newId)[0]);
       setSelectedNote(note[newNoteIndex]);
       setSelectedNoteIndex(newNoteIndex);
@@ -74,8 +75,7 @@ export function Home() {
     } else {
       note.length > 1
         ? selectNote(note[selectedNoteIndex -1], selectedNoteIndex - 1)
-        : setSelectedNoteIndex(0)
-          setSelectedNoteIndex(0)
+        : setSelectedNoteIndex(0) 
     }
 
     firebase

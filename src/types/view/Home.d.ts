@@ -3,3 +3,8 @@ type DataType = {
   body: string;
   id: string;
 }
+
+type NewData = {
+  title: string;
+  body: string;
+}

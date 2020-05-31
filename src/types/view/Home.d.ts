@@ -1,4 +1,4 @@
-type DataType = {
+type Data = {
   title: string;
   body: string;
   id: string;

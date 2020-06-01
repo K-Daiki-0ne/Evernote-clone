@@ -7,7 +7,7 @@ import './Home.css';
 
 export function Home() {
   const [selectedNoteIndex, setSelectedNoteIndex] = useState<number>(0);
-  const [selectedNote, setSelectedNote] = useState<any>(0);
+  const [selectedNote, setSelectedNote] = useState<any>();
   const [note, setNote] = useState<FirebaseData[]>([]);
   
 
@@ -65,7 +65,7 @@ export function Home() {
       setSelectedNoteIndex(newNoteIndex);
   }
 
-  async function deleteNote(note: any) {
+  async function deleteNote(note: any): Promise<void> {
     const noteIndex = note.indexOf(note);
     await setNote(note.filter((_note: any) => _note !== note));
 
@@ -75,7 +75,8 @@ export function Home() {
     } else {
       note.length > 1
         ? selectNote(note[selectedNoteIndex -1], selectedNoteIndex - 1)
-        : setSelectedNoteIndex(0) 
+        : setSelectedNoteIndex(0)
+          setSelectedNote(null)
     }
 
     firebase

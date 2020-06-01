@@ -49,7 +49,7 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({ _note, _index, selecte
         </div>
         <DeleteIcon 
           className={classes.deleteIcon}
-          onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => deleteOneItem(_note)}
+          onClick={(event: React.MouseEvent<any>): void => deleteOneItem(_note)}
         />
       </ListItem>
     </div>

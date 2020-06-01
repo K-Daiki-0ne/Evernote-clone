@@ -3,6 +3,7 @@ import {
   ListItem,
   ListItemText,
 } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
 // import DeleteIcon from '@material-ui/icons/Delete';
 import useStyles from './style.js'
 import { removeHTMLTags } from '../../util/helper';
@@ -46,17 +47,10 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({ _note, _index, selecte
             secondary={removeHTMLTags(_note.body.substring(0, 30)) + '...'}
           />
         </div>
-        {/* <DeleteIcon 
-          className={classes.deleteIcon}
-          onClick={deleteOneItem(_note)}
-        /> */}
-
-        <button
+        <DeleteIcon 
           className={classes.deleteIcon}
           onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => deleteOneItem(_note)}
-        >
-         Delete
-        </button>
+        />
       </ListItem>
     </div>
   )

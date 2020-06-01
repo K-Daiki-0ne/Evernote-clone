@@ -20,7 +20,6 @@
     "react-scripts": "3.4.1",
     "typescript": "~3.7.2"
   },
-
   "resolutions": {
     "@types/react": "^16.9.0"
   },

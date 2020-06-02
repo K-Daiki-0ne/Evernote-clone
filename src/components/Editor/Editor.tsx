@@ -10,6 +10,17 @@ export function Editor() {
   const [title, setTitle] = useState<TitleType>('');
   const [id, setId]       = useState<IdType>('');
 
+  async function updateBody(e: any): Promise<void> {
+    await setText(e);
+    update();    
+  }
+
+  function update(): void {
+    debounce(() => {
+      console.log('Update Database ...OK');
+    }, 1500);
+  }
+
   const classes: any = useStyles();
 
   return (
@@ -21,17 +32,4 @@ export function Editor() {
       />
     </div>
   )
-
-  async function updateBody(e: any) {
-    await setText(e);
-    update();    
-  }
-
-  function update(): void {
-    debounce(() => {
-      console.log('Update Database ...OK');
-    }, 1500);
-  }
-
-
 }

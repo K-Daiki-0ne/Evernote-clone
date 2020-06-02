@@ -13,7 +13,7 @@ type SidebarItemProps = {
   _index: number;
   selectedNoteIndex: number;
   selectItem: (n: any, i:any) => void;
-  deleteItem: (note: any) => void;
+  deleteItem: (note: Note) => void;
 }
 
 export const SidebarItem: React.FC<SidebarItemProps> = ({ _note, _index, selectedNoteIndex, selectItem, deleteItem }) => {

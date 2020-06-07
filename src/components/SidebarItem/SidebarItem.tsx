@@ -4,7 +4,6 @@ import {
   ListItemText,
 } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
-// import DeleteIcon from '@material-ui/icons/Delete';
 import useStyles from './style.js'
 import { removeHTMLTags } from '../../util/helper';
 

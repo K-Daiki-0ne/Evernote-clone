@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import * as firebase from 'firebase';
+import firebase from 'firebase';
 import 'firebase/firestore';
 import { Editor } from '../components/Editor/Editor';
 import { Sidebar } from '../components/Sidebar/Sidebar';
@@ -10,7 +10,7 @@ export function Home() {
   const [selectedNote, setSelectedNote] = useState<any>();
   const [note, setNote] = useState<FirebaseData[]>([]);
   
-
+  
   useEffect(() => {
     firebase
       .firestore()
@@ -98,9 +98,9 @@ export function Home() {
         newNote={newNote}
       />
       {
-        selectNote ?
+        selectedNote ?
           <Editor 
-            selectNote={selectedNote}
+            selectedNote={selectedNote}
             noteUpdate={noteUpdate}
           />
           : null

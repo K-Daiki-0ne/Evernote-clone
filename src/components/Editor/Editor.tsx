@@ -5,11 +5,6 @@ import debounce from '../../util/helper.js';
 import ReactQuill from 'react-quill';
 import "react-quill/dist/quill.snow.css";
 
-type NoteObjProps = {
-  title: string;
-  body: string;
-}
-
 type SelectNote = {
   body: string;
   title: string;
@@ -17,27 +12,27 @@ type SelectNote = {
 }
 
 type EditorProps = {
-  selectNote: SelectNote;
+  selectedNote: SelectNote;
   noteUpdate: (id: string, noteObj: DataType) => void;
 }
 
 
-export const Editor: React.FC<EditorProps> = ({ selectNote, noteUpdate }) => {
+export const Editor: React.FC<EditorProps> = ({ selectedNote, noteUpdate }) => {
   const [text, setText]   = useState<TextType>('');
   const [title, setTitle] = useState<TitleType>('');
   const [id, setId]       = useState<IdType>('');
 
   useEffect(() => {
-    setText(selectNote.body)
-    setTitle(selectNote.title)
-    setId(selectNote.id)
+    setText(selectedNote.body)
+    setTitle(selectedNote.title)
+    setId(selectedNote.id)
   }, [])
 
   useEffect(() => {
-    if(selectNote.id !== id) {
-      setText(selectNote.body)
-      setTitle(selectNote.title)
-      setId(selectNote.id)
+    if(selectedNote.id !== id) {
+      setText(selectedNote.body)
+      setTitle(selectedNote.title)
+      setId(selectedNote.id)
     }
   }, [])
 

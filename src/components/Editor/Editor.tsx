@@ -5,13 +5,22 @@ import debounce from '../../util/helper.js';
 import ReactQuill from 'react-quill';
 import "react-quill/dist/quill.snow.css";
 
+type NoteObjProps = {
+  title: string;
+  body: string;
+}
+
 type EditorProps = {
-  selectNote: SelectNoteType;
-  noteUpdate: () => void;
+  selectNote: {
+    body: string;
+    title: string;
+    id: string;
+  };
+  noteUpdate: (id: string, noteObj: NoteObjProps) => void;
 }
 
 
-export function Editor<EditorProps>({ selectNote, noteUpdate }) {
+export const Editor: React.FC<EditorProps> = ({ selectNote, noteUpdate }) => {
   const [text, setText]   = useState<TextType>('');
   const [title, setTitle] = useState<TitleType>('');
   const [id, setId]       = useState<IdType>('');
@@ -20,7 +29,7 @@ export function Editor<EditorProps>({ selectNote, noteUpdate }) {
     setText(selectNote.body)
     setTitle(selectNote.title)
     setId(selectNote.id)
-  }, [selectNote])
+  }, [])
 
   useEffect(() => {
     if(selectNote.id !== id) {
@@ -35,14 +44,18 @@ export function Editor<EditorProps>({ selectNote, noteUpdate }) {
     update();    
   }
 
-  updateTitle()
+  async function updateTitle(text: string): Promise<void> {
+    await setText(text);
+    update();
+  }
 
   function update(): void {
+    const data: NoteObjProps = {
+      title: title,
+      body: text
+    };
     debounce(() => {
-      noteUpdate(id, {
-        title: title,
-        body: text
-      })
+      noteUpdate(id, data)
     }, 1500);
   }
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import firebase from 'firebase';
+import * as firebase from 'firebase';
 import 'firebase/firestore';
 import { Editor } from '../components/Editor/Editor';
 import { Sidebar } from '../components/Sidebar/Sidebar';
@@ -30,7 +30,9 @@ export function Home() {
     setSelectedNote(note);
   };
 
-  function noteUpdate(id: string, noteObj: Data): void {
+  
+
+  function noteUpdate(id: string, noteObj: NoteObjType): void {
     firebase  
       .firestore()
       .collection('notes')
@@ -95,7 +97,14 @@ export function Home() {
         selectNote={selectNote}
         newNote={newNote}
       />
-      <Editor />
+      {
+        selectNote ?
+          <Editor 
+            selectNote={selectedNote}
+            noteUpdate={noteUpdate}
+          />
+          : null
+      }
     </div>
   )
 }

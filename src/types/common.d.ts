@@ -3,9 +3,9 @@ type TitleType = string;
 type Classes = any;
 
 type FirebaseData = {
-  notes: ({
+  [key: number]: {
     title: string;
     body: string;
     id: string;
-  })
+  }
 }

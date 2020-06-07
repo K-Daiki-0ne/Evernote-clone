@@ -4,6 +4,17 @@ type Data = {
   id: string;
 }
 
+type SelectedNoteType = {
+  body: string;
+  titile: string;
+  id: string;
+}
+
+type NoteObjType = {
+  title: string;
+  body: string
+}
+
 type NewData = {
   title: string;
   body: string;

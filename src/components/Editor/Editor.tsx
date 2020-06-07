@@ -10,13 +10,15 @@ type NoteObjProps = {
   body: string;
 }
 
+type SelectNote = {
+  body: string;
+  title: string;
+  id: string;
+}
+
 type EditorProps = {
-  selectNote: {
-    body: string;
-    title: string;
-    id: string;
-  };
-  noteUpdate: (id: string, noteObj: NoteObjProps) => void;
+  selectNote: SelectNote;
+  noteUpdate: (id: string, noteObj: DataType) => void;
 }
 
 
@@ -50,7 +52,7 @@ export const Editor: React.FC<EditorProps> = ({ selectNote, noteUpdate }) => {
   }
 
   function update(): void {
-    const data: NoteObjProps = {
+    const data: DataType = {
       title: title,
       body: text
     };

@@ -32,7 +32,7 @@ export function Home() {
 
   
 
-  function noteUpdate(id: string, noteObj: NoteObjType): void {
+  function noteUpdate(id: string, noteObj: NewData): void {
     firebase  
       .firestore()
       .collection('notes')

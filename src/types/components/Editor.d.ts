@@ -6,3 +6,8 @@ type SelectNoteType = {
   title: string;
   id: string;
 }
+
+type DataType = {
+  title: string;
+  body: string;
+}

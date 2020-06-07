@@ -50,7 +50,7 @@ export const Sidebar: React.FC<HomeProps> = ({ notes, selectedNoteIndex, deleteN
       <div className={classes.sidebarContainer}>
         <Button 
           className={classes.newNoteBtn}
-          onClick={newNote}
+          onClick={newItem}
         >
           {
             addingNote 
@@ -69,7 +69,7 @@ export const Sidebar: React.FC<HomeProps> = ({ notes, selectedNoteIndex, deleteN
             />
             <Button 
               className={classes.newNoteSubmitBtn}
-              onClick={newItem}
+              onClick={createItem}
             >
               Create New Note
             </Button>
